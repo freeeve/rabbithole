@@ -317,4 +317,12 @@ $(document).ready(function () {
     }
     return true;
   });
+
+  $("#form").submit(function() {
+    inputeditor.setValue(getQuery().replace(/\n/g, '').trim());
+    CodeMirror.commands["selectAll"](inputeditor);
+    autoFormatSelection(inputeditor);
+    resizeOutput();
+    send(getQuery());
+  });
 });
